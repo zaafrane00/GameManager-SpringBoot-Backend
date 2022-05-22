@@ -15,7 +15,6 @@ import java.util.List;
 @RequestMapping("/api")
 public class UserController {
     private final UserService userService;
-    private final RoleService roleService;
 
     @GetMapping("/users")
     public ResponseEntity<List<User>> index(){
@@ -37,7 +36,7 @@ public class UserController {
 
     @PostMapping("/roles/addtouser")
     public ResponseEntity<?> addRoleTOUser(@RequestBody RoleToUserForm request){
-        userService.addRoleToUser(request.getRoleName(),request.getEmail());
+        userService.addRoleToUser(request.getRoleName(),request.getUserName());
         return ResponseEntity.ok().build();
     }
 

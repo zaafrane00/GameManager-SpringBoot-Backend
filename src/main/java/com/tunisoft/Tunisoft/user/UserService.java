@@ -31,18 +31,25 @@ public class UserService implements IUserService{
     }
 
     @Override
-    public void addRoleToUser(String rolename, String email) {
+    public void addRoleToUser(String username, String rolename) {
         log.info("adding role");
-        User user=userDAO.findByEmail(email);
-        Role role=roleDao.findByName(rolename);
-        user.getRoles().add(role);
-
+        User user=userDAO.findUserByUsername(username);
+        Role role=roleDao.findRoleByName(rolename);
+        if(user==null || role==null){
+            if(user==null){
+                log.error(username+" not found");
+            }
+            if(role==null){
+                log.error(rolename+" not found");
+            }
+        }else
+            user.getRoles().add(role);
     }
 
     @Override
-    public User getUser(String email) {
-        log.info("getting user {}",email);
-        return userDAO.findByEmail(email);
+    public User getUser(String userName) {
+        log.info("getting user {}",userName);
+        return userDAO.findUserByUsername(userName);
     }
 
     @Override

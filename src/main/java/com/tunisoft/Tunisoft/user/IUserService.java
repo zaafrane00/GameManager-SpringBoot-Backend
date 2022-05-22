@@ -8,7 +8,7 @@ public interface IUserService {
 
     User saveUser(User user);
     Role saveRole(Role role);
-    void addRoleToUser(String rolename,String email);
-    User getUser(String email);
+    void addRoleToUser(String roleName,String userName);
+    User getUser(String userName);
     List<User> getUsers();
 }

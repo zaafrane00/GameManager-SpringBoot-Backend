@@ -18,7 +18,7 @@ public class User {
     private Long id;
     private String name;
     private String lastname;
-    private String email;
+    private String username;
     private String password;
     @ManyToMany(fetch= FetchType.EAGER)
     private Collection<Role> roles=new ArrayList<>();
